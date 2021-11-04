@@ -574,11 +574,11 @@ class MenuApi {
       hasFields = true;
       mp.fields[r'cookery'] = parameterToString(cookery);
     }
-    if (files != null) {
-      hasFields = true;
-      mp.fields[r'files'] = files.field;
-      mp.files.add(files);
-    }
+    // if (files != null) {
+    //   hasFields = true;
+    //   mp.fields[r'files'] = files.field;
+    //   mp.files.add(files);
+    // }
     if (filesDescription != null) {
       hasFields = true;
       mp.fields[r'filesDescription'] = parameterToString(filesDescription);
