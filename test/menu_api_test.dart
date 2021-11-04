@@ -1,22 +1,12 @@
-//
-// AUTO-GENERATED FILE, DO NOT MODIFY!
-//
-// @dart=2.9
-
-// ignore_for_file: unused_element, unused_import
-// ignore_for_file: always_put_required_named_parameters_first
-// ignore_for_file: constant_identifier_names
-// ignore_for_file: lines_longer_than_80_chars
-
-import 'package:openapi/api.dart';
 import 'package:test/test.dart';
+import 'package:openapi/openapi.dart';
 
 
 /// tests for MenuApi
 void main() {
-  final instance = MenuApi();
+  final instance = Openapi().getMenuApi();
 
-  group('tests for MenuApi', () {
+  group(MenuApi, () {
     // 献立削除
     //
     // 献立を削除 認証必須 
@@ -93,7 +83,7 @@ void main() {
     //
     // 献立を投稿する S3へアップロードする 認証必須 
     //
-    //Future<BasicResponse> postMenu(int id, String title, int category, String contents, bool opened, { String subTitle, MultipartFile thumb, String cookery, List<MultipartFile> files, List<String> filesDescription }) async
+    //Future<BasicResponse> postMenu(int id, String title, int category, String contents, bool opened, { String subTitle, MultipartFile thumb, String cookery, BuiltList<MultipartFile> files, BuiltList<String> filesDescription }) async
     test('test postMenu', () async {
       // TODO
     });
@@ -102,7 +92,7 @@ void main() {
     //
     // 献立情報を検索 タグを指定した場合、そのタグのみ取得する タグを指定しない場合、全てを取得する 認証不要 
     //
-    //Future<MenusResponse> searchMenus({ String keyword, List<int> categories, int page }) async
+    //Future<MenusResponse> searchMenus({ String keyword, BuiltList<int> categories, int page }) async
     test('test searchMenus', () async {
       // TODO
     });

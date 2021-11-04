@@ -32,13 +32,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
-final deleteMenuParam = DeleteMenuParam(); // DeleteMenuParam | 
+final api = Openapi().getMenuApi();
+final DeleteMenuParam deleteMenuParam = ; // DeleteMenuParam | 
 
 try {
-    final result = api_instance.deleteMenu(deleteMenuParam);
-    print(result);
-} catch (e) {
+    final response = api.deleteMenu(deleteMenuParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->deleteMenu: $e\n');
 }
 ```
@@ -75,13 +75,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
-final favoriteMenuParam = FavoriteMenuParam(); // FavoriteMenuParam | 
+final api = Openapi().getMenuApi();
+final FavoriteMenuParam favoriteMenuParam = ; // FavoriteMenuParam | 
 
 try {
-    final result = api_instance.favoriteMenu(favoriteMenuParam);
-    print(result);
-} catch (e) {
+    final response = api.favoriteMenu(favoriteMenuParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->favoriteMenu: $e\n');
 }
 ```
@@ -118,12 +118,12 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
+final api = Openapi().getMenuApi();
 
 try {
-    final result = api_instance.getCompositions();
-    print(result);
-} catch (e) {
+    final response = api.getCompositions();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->getCompositions: $e\n');
 }
 ```
@@ -157,13 +157,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
-final id = 56; // int | 献立ID
+final api = Openapi().getMenuApi();
+final int id = 56; // int | 献立ID
 
 try {
-    final result = api_instance.getMenu(id);
-    print(result);
-} catch (e) {
+    final response = api.getMenu(id);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->getMenu: $e\n');
 }
 ```
@@ -200,12 +200,12 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
+final api = Openapi().getMenuApi();
 
 try {
-    final result = api_instance.getMenuCategories();
-    print(result);
-} catch (e) {
+    final response = api.getMenuCategories();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->getMenuCategories: $e\n');
 }
 ```
@@ -239,12 +239,12 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
+final api = Openapi().getMenuApi();
 
 try {
-    final result = api_instance.getMenuNewArrival();
-    print(result);
-} catch (e) {
+    final response = api.getMenuNewArrival();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->getMenuNewArrival: $e\n');
 }
 ```
@@ -278,12 +278,12 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
+final api = Openapi().getMenuApi();
 
 try {
-    final result = api_instance.getMenuPopular();
-    print(result);
-} catch (e) {
+    final response = api.getMenuPopular();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->getMenuPopular: $e\n');
 }
 ```
@@ -317,13 +317,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
-final page = 56; // int | 取得ページ番号(1~)
+final api = Openapi().getMenuApi();
+final int page = 56; // int | 取得ページ番号(1~)
 
 try {
-    final result = api_instance.getPostedMenus(page);
-    print(result);
-} catch (e) {
+    final response = api.getPostedMenus(page);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->getPostedMenus: $e\n');
 }
 ```
@@ -360,22 +360,22 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
-final id = 56; // int | 献立ID　存在しない場合は0
-final title = title_example; // String | 献立のタイトル
-final category = 56; // int | カテゴリID
-final contents = contents_example; // String | 内容
-final opened = true; // bool | 投稿/保存のフラグ
-final subTitle = subTitle_example; // String | 献立のサブタイトル
-final thumb = BINARY_DATA_HERE; // MultipartFile | 献立のサムネイル画像
-final cookery = cookery_example; // String | 作り方
-final files = [/path/to/file.txt]; // List<MultipartFile> | ファイルリスト
-final filesDescription = []; // List<String> | ファイルの説明
+final api = Openapi().getMenuApi();
+final int id = 56; // int | 献立ID　存在しない場合は0
+final String title = title_example; // String | 献立のタイトル
+final int category = 56; // int | カテゴリID
+final String contents = contents_example; // String | 内容
+final bool opened = true; // bool | 投稿/保存のフラグ
+final String subTitle = subTitle_example; // String | 献立のサブタイトル
+final MultipartFile thumb = BINARY_DATA_HERE; // MultipartFile | 献立のサムネイル画像
+final String cookery = cookery_example; // String | 作り方
+final BuiltList<MultipartFile> files = /path/to/file.txt; // BuiltList<MultipartFile> | ファイルリスト
+final BuiltList<String> filesDescription = ; // BuiltList<String> | ファイルの説明
 
 try {
-    final result = api_instance.postMenu(id, title, category, contents, opened, subTitle, thumb, cookery, files, filesDescription);
-    print(result);
-} catch (e) {
+    final response = api.postMenu(id, title, category, contents, opened, subTitle, thumb, cookery, files, filesDescription);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->postMenu: $e\n');
 }
 ```
@@ -392,8 +392,8 @@ Name | Type | Description  | Notes
  **subTitle** | **String**| 献立のサブタイトル | [optional] 
  **thumb** | **MultipartFile**| 献立のサムネイル画像 | [optional] 
  **cookery** | **String**| 作り方 | [optional] 
- **files** | [**List<MultipartFile>**](MultipartFile.md)| ファイルリスト | [optional] 
- **filesDescription** | [**List<String>**](String.md)| ファイルの説明 | [optional] 
+ **files** | [**BuiltList&lt;MultipartFile&gt;**](MultipartFile.md)| ファイルリスト | [optional] 
+ **filesDescription** | [**BuiltList&lt;String&gt;**](String.md)| ファイルの説明 | [optional] 
 
 ### Return type
 
@@ -421,15 +421,15 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = MenuApi();
-final keyword = keyword_example; // String | 検索キーワード
-final categories = []; // List<int> | 検索カテゴリIDリスト
-final page = 56; // int | 取得ページ番号
+final api = Openapi().getMenuApi();
+final String keyword = keyword_example; // String | 検索キーワード
+final BuiltList<int> categories = ; // BuiltList<int> | 検索カテゴリIDリスト
+final int page = 56; // int | 取得ページ番号
 
 try {
-    final result = api_instance.searchMenus(keyword, categories, page);
-    print(result);
-} catch (e) {
+    final response = api.searchMenus(keyword, categories, page);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling MenuApi->searchMenus: $e\n');
 }
 ```
@@ -439,7 +439,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **keyword** | **String**| 検索キーワード | [optional] 
- **categories** | [**List<int>**](int.md)| 検索カテゴリIDリスト | [optional] [default to const []]
+ **categories** | [**BuiltList&lt;int&gt;**](int.md)| 検索カテゴリIDリスト | [optional] 
  **page** | **int**| 取得ページ番号 | [optional] [default to 1]
 
 ### Return type

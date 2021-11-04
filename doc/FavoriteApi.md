@@ -25,13 +25,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = FavoriteApi();
-final id = 56; // int | 記事ID
+final api = Openapi().getFavoriteApi();
+final int id = 56; // int | 記事ID
 
 try {
-    final result = api_instance.favoriteArticleIsAdded(id);
-    print(result);
-} catch (e) {
+    final response = api.favoriteArticleIsAdded(id);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling FavoriteApi->favoriteArticleIsAdded: $e\n');
 }
 ```
@@ -68,13 +68,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = FavoriteApi();
-final id = 56; // int | 献立ID
+final api = Openapi().getFavoriteApi();
+final int id = 56; // int | 献立ID
 
 try {
-    final result = api_instance.favoriteMenuIsAdded(id);
-    print(result);
-} catch (e) {
+    final response = api.favoriteMenuIsAdded(id);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling FavoriteApi->favoriteMenuIsAdded: $e\n');
 }
 ```
@@ -111,14 +111,14 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = FavoriteApi();
-final menuPage = 56; // int | 献立取得ページ番号(1~)
-final articlePage = 56; // int | 記事取得ページ番号(1~)
+final api = Openapi().getFavoriteApi();
+final int menuPage = 56; // int | 献立取得ページ番号(1~)
+final int articlePage = 56; // int | 記事取得ページ番号(1~)
 
 try {
-    final result = api_instance.getFavoriteItems(menuPage, articlePage);
-    print(result);
-} catch (e) {
+    final response = api.getFavoriteItems(menuPage, articlePage);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling FavoriteApi->getFavoriteItems: $e\n');
 }
 ```

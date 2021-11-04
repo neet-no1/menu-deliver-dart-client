@@ -23,12 +23,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = NoticeApi();
+final api = Openapi().getNoticeApi();
 
 try {
-    final result = api_instance.getNotices();
-    print(result);
-} catch (e) {
+    final response = api.getNotices();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling NoticeApi->getNotices: $e\n');
 }
 ```

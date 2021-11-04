@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **categoryId** | **int** | 献立のカテゴリ | [optional] 
 **thumbPath** | **String** | サムネイル画像パス | [optional] 
 **contents** | **String** | 献立の栄養素・作り方の情報パス | [optional] 
-**imagePaths** | [**List<MenuImageData>**](MenuImageData.md) |  | [optional] [default to const []]
+**imagePaths** | [**BuiltList&lt;MenuImageData&gt;**](MenuImageData.md) |  | [optional] 
 **opened** | **bool** | 公開済みか | [optional] 
 **mine** | **bool** | 自分が投稿したものか | [optional] 
 

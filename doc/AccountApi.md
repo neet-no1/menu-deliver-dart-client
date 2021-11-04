@@ -29,13 +29,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AccountApi();
-final oneTimePassword = oneTimePassword_example; // String | メールアドレスの有効性確認パスワード
+final api = Openapi().getAccountApi();
+final String oneTimePassword = oneTimePassword_example; // String | メールアドレスの有効性確認パスワード
 
 try {
-    final result = api_instance.emailConfirm(oneTimePassword);
-    print(result);
-} catch (e) {
+    final response = api.emailConfirm(oneTimePassword);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling AccountApi->emailConfirm: $e\n');
 }
 ```
@@ -72,12 +72,12 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AccountApi();
+final api = Openapi().getAccountApi();
 
 try {
-    final result = api_instance.getAccountAuth();
-    print(result);
-} catch (e) {
+    final response = api.getAccountAuth();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling AccountApi->getAccountAuth: $e\n');
 }
 ```
@@ -111,12 +111,12 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AccountApi();
+final api = Openapi().getAccountApi();
 
 try {
-    final result = api_instance.getAccountInfo();
-    print(result);
-} catch (e) {
+    final response = api.getAccountInfo();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling AccountApi->getAccountInfo: $e\n');
 }
 ```
@@ -150,13 +150,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AccountApi();
-final registAccountParam = RegistAccountParam(); // RegistAccountParam | 
+final api = Openapi().getAccountApi();
+final RegistAccountParam registAccountParam = ; // RegistAccountParam | 
 
 try {
-    final result = api_instance.registAccount(registAccountParam);
-    print(result);
-} catch (e) {
+    final response = api.registAccount(registAccountParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling AccountApi->registAccount: $e\n');
 }
 ```
@@ -193,13 +193,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AccountApi();
-final passwordResetParam = PasswordResetParam(); // PasswordResetParam | 
+final api = Openapi().getAccountApi();
+final PasswordResetParam passwordResetParam = ; // PasswordResetParam | 
 
 try {
-    final result = api_instance.resetPassword(passwordResetParam);
-    print(result);
-} catch (e) {
+    final response = api.resetPassword(passwordResetParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling AccountApi->resetPassword: $e\n');
 }
 ```
@@ -236,15 +236,15 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AccountApi();
-final name = name_example; // String | ニックネーム
-final email = email_example; // String | メールアドレス
-final icon = BINARY_DATA_HERE; // MultipartFile | ユーザアイコン画像ファイル
+final api = Openapi().getAccountApi();
+final String name = name_example; // String | ニックネーム
+final String email = email_example; // String | メールアドレス
+final MultipartFile icon = BINARY_DATA_HERE; // MultipartFile | ユーザアイコン画像ファイル
 
 try {
-    final result = api_instance.updateAccountInfo(name, email, icon);
-    print(result);
-} catch (e) {
+    final response = api.updateAccountInfo(name, email, icon);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling AccountApi->updateAccountInfo: $e\n');
 }
 ```
@@ -283,13 +283,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = AccountApi();
-final updatePasswordParam = UpdatePasswordParam(); // UpdatePasswordParam | 
+final api = Openapi().getAccountApi();
+final UpdatePasswordParam updatePasswordParam = ; // UpdatePasswordParam | 
 
 try {
-    final result = api_instance.updatePassword(updatePasswordParam);
-    print(result);
-} catch (e) {
+    final response = api.updatePassword(updatePasswordParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling AccountApi->updatePassword: $e\n');
 }
 ```

@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**info** | [**Object**](Object.md) |  | [optional] 
+**info** | [**JsonObject**](JsonObject.md) |  | [optional] 
 **code** | **int** | 0以外はエラーコード | [optional] 
 **errorInfo** | [**ErrorInfo**](ErrorInfo.md) |  | [optional] 
 

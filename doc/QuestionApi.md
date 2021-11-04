@@ -30,15 +30,15 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = QuestionApi();
-final id = 56; // int | 質問ID
-final contents = contents_example; // String | 内容
-final file = BINARY_DATA_HERE; // MultipartFile | 質問内容の画像
+final api = Openapi().getQuestionApi();
+final int id = 56; // int | 質問ID
+final String contents = contents_example; // String | 内容
+final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 質問内容の画像
 
 try {
-    final result = api_instance.answerQuestion(id, contents, file);
-    print(result);
-} catch (e) {
+    final response = api.answerQuestion(id, contents, file);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling QuestionApi->answerQuestion: $e\n');
 }
 ```
@@ -77,13 +77,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = QuestionApi();
-final decideBestAnswerParam = DecideBestAnswerParam(); // DecideBestAnswerParam | 
+final api = Openapi().getQuestionApi();
+final DecideBestAnswerParam decideBestAnswerParam = ; // DecideBestAnswerParam | 
 
 try {
-    final result = api_instance.decideBestAnswer(decideBestAnswerParam);
-    print(result);
-} catch (e) {
+    final response = api.decideBestAnswer(decideBestAnswerParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling QuestionApi->decideBestAnswer: $e\n');
 }
 ```
@@ -120,13 +120,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = QuestionApi();
-final id = 56; // int | 質問ID
+final api = Openapi().getQuestionApi();
+final int id = 56; // int | 質問ID
 
 try {
-    final result = api_instance.getAnswers(id);
-    print(result);
-} catch (e) {
+    final response = api.getAnswers(id);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling QuestionApi->getAnswers: $e\n');
 }
 ```
@@ -163,13 +163,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = QuestionApi();
-final id = 56; // int | 質問ID
+final api = Openapi().getQuestionApi();
+final int id = 56; // int | 質問ID
 
 try {
-    final result = api_instance.getBestAnswer(id);
-    print(result);
-} catch (e) {
+    final response = api.getBestAnswer(id);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling QuestionApi->getBestAnswer: $e\n');
 }
 ```
@@ -206,13 +206,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = QuestionApi();
-final id = 56; // int | 質問ID
+final api = Openapi().getQuestionApi();
+final int id = 56; // int | 質問ID
 
 try {
-    final result = api_instance.getQuestion(id);
-    print(result);
-} catch (e) {
+    final response = api.getQuestion(id);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling QuestionApi->getQuestion: $e\n');
 }
 ```
@@ -249,12 +249,12 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = QuestionApi();
+final api = Openapi().getQuestionApi();
 
 try {
-    final result = api_instance.getQuestionCategories();
-    print(result);
-} catch (e) {
+    final response = api.getQuestionCategories();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling QuestionApi->getQuestionCategories: $e\n');
 }
 ```
@@ -288,14 +288,14 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = QuestionApi();
-final contents = contents_example; // String | 内容
-final file = BINARY_DATA_HERE; // MultipartFile | 質問内容の画像
+final api = Openapi().getQuestionApi();
+final String contents = contents_example; // String | 内容
+final MultipartFile file = BINARY_DATA_HERE; // MultipartFile | 質問内容の画像
 
 try {
-    final result = api_instance.postQuestion(contents, file);
-    print(result);
-} catch (e) {
+    final response = api.postQuestion(contents, file);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling QuestionApi->postQuestion: $e\n');
 }
 ```
@@ -333,17 +333,17 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = QuestionApi();
-final pageNewArrival = 56; // int | 新着の取得ページ番号
-final pageUnsolved = 56; // int | 未解決の取得ページ番号
-final pageSolved = 56; // int | 解決済みの取得ページ番号
-final tags = []; // List<int> | 選択したタグIDの配列
-final keyword = keyword_example; // String | 検索キーワード
+final api = Openapi().getQuestionApi();
+final int pageNewArrival = 56; // int | 新着の取得ページ番号
+final int pageUnsolved = 56; // int | 未解決の取得ページ番号
+final int pageSolved = 56; // int | 解決済みの取得ページ番号
+final BuiltList<int> tags = ; // BuiltList<int> | 選択したタグIDの配列
+final String keyword = keyword_example; // String | 検索キーワード
 
 try {
-    final result = api_instance.searchQuestions(pageNewArrival, pageUnsolved, pageSolved, tags, keyword);
-    print(result);
-} catch (e) {
+    final response = api.searchQuestions(pageNewArrival, pageUnsolved, pageSolved, tags, keyword);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling QuestionApi->searchQuestions: $e\n');
 }
 ```
@@ -355,7 +355,7 @@ Name | Type | Description  | Notes
  **pageNewArrival** | **int**| 新着の取得ページ番号 | [default to 1]
  **pageUnsolved** | **int**| 未解決の取得ページ番号 | [default to 1]
  **pageSolved** | **int**| 解決済みの取得ページ番号 | [default to 1]
- **tags** | [**List<int>**](int.md)| 選択したタグIDの配列 | [optional] [default to const []]
+ **tags** | [**BuiltList&lt;int&gt;**](int.md)| 選択したタグIDの配列 | [optional] 
  **keyword** | **String**| 検索キーワード | [optional] 
 
 ### Return type

@@ -24,13 +24,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = FollowApi();
-final followUserParam = FollowUserParam(); // FollowUserParam | 
+final api = Openapi().getFollowApi();
+final FollowUserParam followUserParam = ; // FollowUserParam | 
 
 try {
-    final result = api_instance.followUser(followUserParam);
-    print(result);
-} catch (e) {
+    final response = api.followUser(followUserParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling FollowApi->followUser: $e\n');
 }
 ```
@@ -67,14 +67,14 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = FollowApi();
-final followPage = 56; // int | フォロー取得ページ番号(1~)
-final followerPage = 56; // int | フォロワー取得ページ番号(1~)
+final api = Openapi().getFollowApi();
+final int followPage = 56; // int | フォロー取得ページ番号(1~)
+final int followerPage = 56; // int | フォロワー取得ページ番号(1~)
 
 try {
-    final result = api_instance.getFollowers(followPage, followerPage);
-    print(result);
-} catch (e) {
+    final response = api.getFollowers(followPage, followerPage);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling FollowApi->getFollowers: $e\n');
 }
 ```

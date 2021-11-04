@@ -8,7 +8,7 @@ import 'package:openapi/api.dart';
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**info** | [**List<CompositionData>**](CompositionData.md) |  | [optional] [default to const []]
+**info** | [**BuiltList&lt;CompositionData&gt;**](CompositionData.md) |  | [optional] 
 **code** | **int** | 0以外はエラーコード | [optional] 
 **errorInfo** | [**ErrorInfo**](ErrorInfo.md) |  | [optional] 
 

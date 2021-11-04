@@ -23,14 +23,14 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = LoginApi();
-final email = email_example; // String | メールアドレス
-final password = password_example; // String | パスワード
+final api = Openapi().getLoginApi();
+final String email = email_example; // String | メールアドレス
+final String password = password_example; // String | パスワード
 
 try {
-    final result = api_instance.login(email, password);
-    print(result);
-} catch (e) {
+    final response = api.login(email, password);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling LoginApi->login: $e\n');
 }
 ```

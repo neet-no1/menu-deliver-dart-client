@@ -23,12 +23,12 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = RecommendApi();
+final api = Openapi().getRecommendApi();
 
 try {
-    final result = api_instance.getRecommendMeta();
-    print(result);
-} catch (e) {
+    final response = api.getRecommendMeta();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling RecommendApi->getRecommendMeta: $e\n');
 }
 ```

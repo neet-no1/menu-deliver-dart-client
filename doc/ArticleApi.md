@@ -29,13 +29,13 @@ Method | HTTP request | Description
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = ArticleApi();
-final deleteArticleParam = DeleteArticleParam(); // DeleteArticleParam | 
+final api = Openapi().getArticleApi();
+final DeleteArticleParam deleteArticleParam = ; // DeleteArticleParam | 
 
 try {
-    final result = api_instance.deleteArticle(deleteArticleParam);
-    print(result);
-} catch (e) {
+    final response = api.deleteArticle(deleteArticleParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling ArticleApi->deleteArticle: $e\n');
 }
 ```
@@ -72,13 +72,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = ArticleApi();
-final favoriteArticleParam = FavoriteArticleParam(); // FavoriteArticleParam | 
+final api = Openapi().getArticleApi();
+final FavoriteArticleParam favoriteArticleParam = ; // FavoriteArticleParam | 
 
 try {
-    final result = api_instance.favoriteArticle(favoriteArticleParam);
-    print(result);
-} catch (e) {
+    final response = api.favoriteArticle(favoriteArticleParam);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling ArticleApi->favoriteArticle: $e\n');
 }
 ```
@@ -115,13 +115,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = ArticleApi();
-final id = 56; // int | 記事ID
+final api = Openapi().getArticleApi();
+final int id = 56; // int | 記事ID
 
 try {
-    final result = api_instance.getArticle(id);
-    print(result);
-} catch (e) {
+    final response = api.getArticle(id);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling ArticleApi->getArticle: $e\n');
 }
 ```
@@ -158,12 +158,12 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = ArticleApi();
+final api = Openapi().getArticleApi();
 
 try {
-    final result = api_instance.getArticleNewArrival();
-    print(result);
-} catch (e) {
+    final response = api.getArticleNewArrival();
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling ArticleApi->getArticleNewArrival: $e\n');
 }
 ```
@@ -197,13 +197,13 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = ArticleApi();
-final page = 56; // int | 取得ページ番号(1~)
+final api = Openapi().getArticleApi();
+final int page = 56; // int | 取得ページ番号(1~)
 
 try {
-    final result = api_instance.getPostedArticles(page);
-    print(result);
-} catch (e) {
+    final response = api.getPostedArticles(page);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling ArticleApi->getPostedArticles: $e\n');
 }
 ```
@@ -240,17 +240,17 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = ArticleApi();
-final id = 56; // int | 記事ID　存在しない場合は0
-final title = title_example; // String | 記事のタイトル
-final contents = contents_example; // String | 内容
-final opened = true; // bool | 投稿/保存のフラグ
-final thumb = BINARY_DATA_HERE; // MultipartFile | 記事のサムネイル画像
+final api = Openapi().getArticleApi();
+final int id = 56; // int | 記事ID　存在しない場合は0
+final String title = title_example; // String | 記事のタイトル
+final String contents = contents_example; // String | 内容
+final bool opened = true; // bool | 投稿/保存のフラグ
+final MultipartFile thumb = BINARY_DATA_HERE; // MultipartFile | 記事のサムネイル画像
 
 try {
-    final result = api_instance.postArticle(id, title, contents, opened, thumb);
-    print(result);
-} catch (e) {
+    final response = api.postArticle(id, title, contents, opened, thumb);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling ArticleApi->postArticle: $e\n');
 }
 ```
@@ -291,14 +291,14 @@ No authorization required
 ```dart
 import 'package:openapi/api.dart';
 
-final api_instance = ArticleApi();
-final keyword = keyword_example; // String | 検索キーワード
-final page = 56; // int | 取得ページ番号
+final api = Openapi().getArticleApi();
+final String keyword = keyword_example; // String | 検索キーワード
+final int page = 56; // int | 取得ページ番号
 
 try {
-    final result = api_instance.searchArticles(keyword, page);
-    print(result);
-} catch (e) {
+    final response = api.searchArticles(keyword, page);
+    print(response);
+} catch on DioError (e) {
     print('Exception when calling ArticleApi->searchArticles: $e\n');
 }
 ```
