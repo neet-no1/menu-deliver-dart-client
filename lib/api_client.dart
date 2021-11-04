@@ -1,230 +1,341 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
 
-class QueryParam {
-  String name;
-  String value;
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
 
-  QueryParam(this.name, this.value);
-}
+part of openapi.api;
 
 class ApiClient {
-
-  String basePath;
-  var client = new BrowserClient();
-
-  Map<String, String> _defaultHeaderMap = {};
-  Map<String, Authentication> _authentications = {};
-
-  final _RegList = new RegExp(r'^List<(.*)>$');
-  final _RegMap = new RegExp(r'^Map<String,(.*)>$');
-
-  ApiClient({this.basePath: "https://localhost:48080/api"}) {
-    // Setup authentications (key: authentication name, value: authentication).
+  ApiClient({this.basePath = 'https://localhost:48080/api'}) {
   }
+
+  final String basePath;
+
+  var _client = Client();
+
+  /// Returns the current HTTP [Client] instance to use in this class.
+  ///
+  /// The return value is guaranteed to never be null.
+  Client get client => _client;
+
+  /// Requests to use a new HTTP [Client] in this class.
+  ///
+  /// If the [newClient] is null, an [ArgumentError] is thrown.
+  set client(Client newClient) {
+    if (newClient == null) {
+      throw ArgumentError('New client instance cannot be null.');
+    }
+    _client = newClient;
+  }
+
+  final _defaultHeaderMap = <String, String>{};
+  final _authentications = <String, Authentication>{};
 
   void addDefaultHeader(String key, String value) {
      _defaultHeaderMap[key] = value;
   }
 
-  dynamic _deserialize(dynamic value, String targetType) {
-    try {
-      switch (targetType) {
-        case 'String':
-          return '$value';
-        case 'int':
-          return value is int ? value : int.parse('$value');
-        case 'bool':
-          return value is bool ? value : '$value'.toLowerCase() == 'true';
-        case 'double':
-          return value is double ? value : double.parse('$value');
-        case 'AccountAuthResponse':
-          return new AccountAuthResponse.fromJson(value);
-        case 'AccountData':
-          return new AccountData.fromJson(value);
-        case 'AccountResponse':
-          return new AccountResponse.fromJson(value);
-        case 'AnswerData':
-          return new AnswerData.fromJson(value);
-        case 'AnswersResponse':
-          return new AnswersResponse.fromJson(value);
-        case 'ArticleData':
-          return new ArticleData.fromJson(value);
-        case 'ArticleDataResponse':
-          return new ArticleDataResponse.fromJson(value);
-        case 'ArticlesResponse':
-          return new ArticlesResponse.fromJson(value);
-        case 'BasicResponse':
-          return new BasicResponse.fromJson(value);
-        case 'BestAnswerResponse':
-          return new BestAnswerResponse.fromJson(value);
-        case 'CompositionData':
-          return new CompositionData.fromJson(value);
-        case 'CompositionsResponse':
-          return new CompositionsResponse.fromJson(value);
-        case 'DecideBestAnswerParam':
-          return new DecideBestAnswerParam.fromJson(value);
-        case 'DeleteArticleParam':
-          return new DeleteArticleParam.fromJson(value);
-        case 'DeleteMenuParam':
-          return new DeleteMenuParam.fromJson(value);
-        case 'ErrorInfo':
-          return new ErrorInfo.fromJson(value);
-        case 'FavoriteArticleIsAddedResponse':
-          return new FavoriteArticleIsAddedResponse.fromJson(value);
-        case 'FavoriteArticleParam':
-          return new FavoriteArticleParam.fromJson(value);
-        case 'FavoriteMenuIsAddedResponse':
-          return new FavoriteMenuIsAddedResponse.fromJson(value);
-        case 'FavoriteMenuParam':
-          return new FavoriteMenuParam.fromJson(value);
-        case 'FollowUserData':
-          return new FollowUserData.fromJson(value);
-        case 'FollowUserParam':
-          return new FollowUserParam.fromJson(value);
-        case 'FollowersResponse':
-          return new FollowersResponse.fromJson(value);
-        case 'MenuCategoriesResponse':
-          return new MenuCategoriesResponse.fromJson(value);
-        case 'MenuCategoryData':
-          return new MenuCategoryData.fromJson(value);
-        case 'MenuData':
-          return new MenuData.fromJson(value);
-        case 'MenuDataResponse':
-          return new MenuDataResponse.fromJson(value);
-        case 'MenuDeliverResponse':
-          return new MenuDeliverResponse.fromJson(value);
-        case 'MenuImageData':
-          return new MenuImageData.fromJson(value);
-        case 'MenusAndArticlesResponse':
-          return new MenusAndArticlesResponse.fromJson(value);
-        case 'MenusResponse':
-          return new MenusResponse.fromJson(value);
-        case 'NoticesResponse':
-          return new NoticesResponse.fromJson(value);
-        case 'PageNation':
-          return new PageNation.fromJson(value);
-        case 'PasswordResetParam':
-          return new PasswordResetParam.fromJson(value);
-        case 'QuestionCategoriesResponse':
-          return new QuestionCategoriesResponse.fromJson(value);
-        case 'QuestionCategoryData':
-          return new QuestionCategoryData.fromJson(value);
-        case 'QuestionData':
-          return new QuestionData.fromJson(value);
-        case 'QuestionDataResponse':
-          return new QuestionDataResponse.fromJson(value);
-        case 'QuestionsResponse':
-          return new QuestionsResponse.fromJson(value);
-        case 'RecommendMetaDataResponse':
-          return new RecommendMetaDataResponse.fromJson(value);
-        case 'RegistAccountParam':
-          return new RegistAccountParam.fromJson(value);
-        case 'UpdatePasswordParam':
-          return new UpdatePasswordParam.fromJson(value);
-        default:
-          {
-            Match match;
-            if (value is List &&
-                (match = _RegList.firstMatch(targetType)) != null) {
-              var newTargetType = match[1];
-              return value.map((v) => _deserialize(v, newTargetType)).toList();
-            } else if (value is Map &&
-                (match = _RegMap.firstMatch(targetType)) != null) {
-              var newTargetType = match[1];
-              return new Map.fromIterables(value.keys,
-                  value.values.map((v) => _deserialize(v, newTargetType)));
-            }
-          }
-      }
-    } catch (e, stack) {
-      throw new ApiException.withInner(500, 'Exception during deserialization.', e, stack);
-    }
-    throw new ApiException(500, 'Could not find a suitable class for deserialization');
-  }
+  Map<String,String> get defaultHeaderMap => _defaultHeaderMap;
 
-  dynamic deserialize(String jsonVal, String targetType) {
-    // Remove all spaces.  Necessary for reg expressions as well.
-    targetType = targetType.replaceAll(' ', '');
+  /// Returns an unmodifiable [Map] of the authentications, since none should be added
+  /// or deleted.
+  Map<String, Authentication> get authentications => Map.unmodifiable(_authentications);
 
-    if (targetType == 'String') return jsonVal;
-
-    var decodedJson = json.decode(jsonVal);
-    return _deserialize(decodedJson, targetType);
-  }
-
-  String serialize(Object obj) {
-    String serialized = '';
-    if (obj == null) {
-      serialized = '';
-    } else {
-      serialized = json.encode(obj);
-    }
-    return serialized;
+  T getAuthentication<T extends Authentication>(String name) {
+    final authentication = _authentications[name];
+    return authentication is T ? authentication : null;
   }
 
   // We don't use a Map<String, String> for queryParams.
-  // If collectionFormat is 'multi' a key might appear multiple times.
-  Future<Response> invokeAPI(String path,
-                             String method,
-                             Iterable<QueryParam> queryParams,
-                             Object body,
-                             Map<String, String> headerParams,
-                             Map<String, String> formParams,
-                             String contentType,
-                             List<String> authNames) async {
-
+  // If collectionFormat is 'multi', a key might appear multiple times.
+  Future<Response> invokeAPI(
+    String path,
+    String method,
+    List<QueryParam> queryParams,
+    Object body,
+    Map<String, String> headerParams,
+    Map<String, String> formParams,
+    String nullableContentType,
+    List<String> authNames,
+  ) async {
     _updateParamsForAuth(authNames, queryParams, headerParams);
 
-    var ps = queryParams.where((p) => p.value != null).map((p) => '${p.name}=${p.value}');
-    String queryString = ps.isNotEmpty ?
-                         '?' + ps.join('&') :
-                         '';
-
-    String url = basePath + path + queryString;
-
     headerParams.addAll(_defaultHeaderMap);
-    headerParams['Content-Type'] = contentType;
 
-    if(body is MultipartRequest) {
-      var request = new MultipartRequest(method, Uri.parse(url));
-      request.fields.addAll(body.fields);
-      request.files.addAll(body.files);
-      request.headers.addAll(body.headers);
-      request.headers.addAll(headerParams);
-      var response = await client.send(request);
-      return Response.fromStream(response);
-    } else {
-      var msgBody = contentType == "application/x-www-form-urlencoded" ? formParams : serialize(body);
-      switch(method) {
-        case "POST":
-          return client.post(url, headers: headerParams, body: msgBody);
-        case "PUT":
-          return client.put(url, headers: headerParams, body: msgBody);
-        case "DELETE":
-          return client.delete(url, headers: headerParams);
-        case "PATCH":
-          return client.patch(url, headers: headerParams, body: msgBody);
-        default:
-          return client.get(url, headers: headerParams);
-      }
+    final urlEncodedQueryParams = queryParams
+      .where((param) => param.value != null)
+      .map((param) => '$param');
+
+    final queryString = urlEncodedQueryParams.isNotEmpty
+      ? '?${urlEncodedQueryParams.join('&')}'
+      : '';
+
+    final uri = Uri.parse('$basePath$path$queryString');
+
+    if (nullableContentType != null) {
+      headerParams['Content-Type'] = nullableContentType;
     }
+
+    try {
+      // Special case for uploading a single file which isn't a 'multipart/form-data'.
+      if (
+        body is MultipartFile && (nullableContentType == null ||
+        !nullableContentType.toLowerCase().startsWith('multipart/form-data'))
+      ) {
+        final request = StreamedRequest(method, uri);
+        request.headers.addAll(headerParams);
+        request.contentLength = body.length;
+        body.finalize().listen(
+          request.sink.add,
+          onDone: request.sink.close,
+          // ignore: avoid_types_on_closure_parameters
+          onError: (Object error, StackTrace trace) => request.sink.close(),
+          cancelOnError: true,
+        );
+        final response = await _client.send(request);
+        return Response.fromStream(response);
+      }
+
+      if (body is MultipartRequest) {
+        final request = MultipartRequest(method, uri);
+        request.fields.addAll(body.fields);
+        request.files.addAll(body.files);
+        request.headers.addAll(body.headers);
+        request.headers.addAll(headerParams);
+        final response = await _client.send(request);
+        return Response.fromStream(response);
+      }
+
+      final msgBody = nullableContentType == 'application/x-www-form-urlencoded'
+        ? formParams
+        : await serializeAsync(body);
+      final nullableHeaderParams = headerParams.isEmpty ? null : headerParams;
+
+      switch(method) {
+        case 'POST': return await _client.post(uri, headers: nullableHeaderParams, body: msgBody,);
+        case 'PUT': return await _client.put(uri, headers: nullableHeaderParams, body: msgBody,);
+        case 'DELETE': return await _client.delete(uri, headers: nullableHeaderParams, body: msgBody,);
+        case 'PATCH': return await _client.patch(uri, headers: nullableHeaderParams, body: msgBody,);
+        case 'HEAD': return await _client.head(uri, headers: nullableHeaderParams,);
+        case 'GET': return await _client.get(uri, headers: nullableHeaderParams,);
+      }
+    } on SocketException catch (e, trace) {
+      throw ApiException.withInner(HttpStatus.badRequest, 'Socket operation failed: $method $path', e, trace,);
+    } on TlsException catch (e, trace) {
+      throw ApiException.withInner(HttpStatus.badRequest, 'TLS/SSL communication failed: $method $path', e, trace,);
+    } on IOException catch (e, trace) {
+      throw ApiException.withInner(HttpStatus.badRequest, 'I/O operation failed: $method $path', e, trace,);
+    } on ClientException catch (e, trace) {
+      throw ApiException.withInner(HttpStatus.badRequest, 'HTTP connection failed: $method $path', e, trace,);
+    } on Exception catch (e, trace) {
+      throw ApiException.withInner(HttpStatus.badRequest, 'Exception occurred: $method $path', e, trace,);
+    }
+
+    throw ApiException(HttpStatus.badRequest, 'Invalid HTTP operation: $method $path',);
   }
+
+  Future<dynamic> deserializeAsync(String json, String targetType, {bool growable}) async =>
+    // ignore: deprecated_member_use_from_same_package
+    deserialize(json, targetType, growable: growable);
+
+  @Deprecated('Scheduled for removal in OpenAPI Generator 6.x. Use deserializeAsync() instead.')
+  dynamic deserialize(String json, String targetType, {bool growable}) {
+    // Remove all spaces. Necessary for regular expressions as well.
+    targetType = targetType.replaceAll(' ', ''); // ignore: parameter_assignments
+
+    // If the expected target type is String, nothing to do...
+    return targetType == 'String'
+      ? json
+      : _deserialize(jsonDecode(json), targetType, growable: growable == true);
+  }
+
+  // ignore: deprecated_member_use_from_same_package
+  Future<String> serializeAsync(Object value) async => serialize(value);
+
+  @Deprecated('Scheduled for removal in OpenAPI Generator 6.x. Use serializeAsync() instead.')
+  String serialize(Object value) => value == null ? '' : json.encode(value);
 
   /// Update query and header parameters based on authentication settings.
   /// @param authNames The authentications to apply
-  void _updateParamsForAuth(List<String> authNames, List<QueryParam> queryParams, Map<String, String> headerParams) {
-    authNames.forEach((authName) {
-      Authentication auth = _authentications[authName];
-      if (auth == null) throw new ArgumentError("Authentication undefined: " + authName);
+  void _updateParamsForAuth(
+    List<String> authNames,
+    List<QueryParam> queryParams,
+    Map<String, String> headerParams,
+  ) {
+    for(final authName in authNames) {
+      final auth = _authentications[authName];
+      if (auth == null) {
+        throw ArgumentError('Authentication undefined: $authName');
+      }
       auth.applyToParams(queryParams, headerParams);
-    });
+    }
   }
 
-  void setAccessToken(String accessToken) {
-    _authentications.forEach((key, auth) {
-      if (auth is OAuth) {
-        auth.setAccessToken(accessToken);
+  static dynamic _deserialize(dynamic value, String targetType, {bool growable}) {
+    try {
+      switch (targetType) {
+        case 'String':
+          return value is String ? value : value.toString();
+        case 'int':
+          return value is int ? value : int.parse('$value');
+        case 'double':
+          return value is double ? value : double.parse('$value');
+        case 'bool':
+          if (value is bool) {
+            return value;
+          }
+          final valueString = '$value'.toLowerCase();
+          return valueString == 'true' || valueString == '1';
+        case 'AccountAuthResponse':
+          return AccountAuthResponse.fromJson(value);
+        case 'AccountData':
+          return AccountData.fromJson(value);
+        case 'AccountResponse':
+          return AccountResponse.fromJson(value);
+        case 'AnswerData':
+          return AnswerData.fromJson(value);
+        case 'AnswersResponse':
+          return AnswersResponse.fromJson(value);
+        case 'ArticleData':
+          return ArticleData.fromJson(value);
+        case 'ArticleDataResponse':
+          return ArticleDataResponse.fromJson(value);
+        case 'ArticlesResponse':
+          return ArticlesResponse.fromJson(value);
+        case 'BasicResponse':
+          return BasicResponse.fromJson(value);
+        case 'BestAnswerResponse':
+          return BestAnswerResponse.fromJson(value);
+        case 'CompositionData':
+          return CompositionData.fromJson(value);
+        case 'CompositionsResponse':
+          return CompositionsResponse.fromJson(value);
+        case 'DecideBestAnswerParam':
+          return DecideBestAnswerParam.fromJson(value);
+        case 'DeleteArticleParam':
+          return DeleteArticleParam.fromJson(value);
+        case 'DeleteMenuParam':
+          return DeleteMenuParam.fromJson(value);
+        case 'ErrorInfo':
+          return ErrorInfo.fromJson(value);
+        case 'FavoriteArticleIsAddedResponse':
+          return FavoriteArticleIsAddedResponse.fromJson(value);
+        case 'FavoriteArticleParam':
+          return FavoriteArticleParam.fromJson(value);
+        case 'FavoriteMenuIsAddedResponse':
+          return FavoriteMenuIsAddedResponse.fromJson(value);
+        case 'FavoriteMenuParam':
+          return FavoriteMenuParam.fromJson(value);
+        case 'FollowUserData':
+          return FollowUserData.fromJson(value);
+        case 'FollowUserParam':
+          return FollowUserParam.fromJson(value);
+        case 'FollowersResponse':
+          return FollowersResponse.fromJson(value);
+        case 'MenuCategoriesResponse':
+          return MenuCategoriesResponse.fromJson(value);
+        case 'MenuCategoryData':
+          return MenuCategoryData.fromJson(value);
+        case 'MenuData':
+          return MenuData.fromJson(value);
+        case 'MenuDataResponse':
+          return MenuDataResponse.fromJson(value);
+        case 'MenuDeliverResponse':
+          return MenuDeliverResponse.fromJson(value);
+        case 'MenuImageData':
+          return MenuImageData.fromJson(value);
+        case 'MenusAndArticlesResponse':
+          return MenusAndArticlesResponse.fromJson(value);
+        case 'MenusResponse':
+          return MenusResponse.fromJson(value);
+        case 'NoticesResponse':
+          return NoticesResponse.fromJson(value);
+        case 'PageNation':
+          return PageNation.fromJson(value);
+        case 'PasswordResetParam':
+          return PasswordResetParam.fromJson(value);
+        case 'QuestionCategoriesResponse':
+          return QuestionCategoriesResponse.fromJson(value);
+        case 'QuestionCategoryData':
+          return QuestionCategoryData.fromJson(value);
+        case 'QuestionData':
+          return QuestionData.fromJson(value);
+        case 'QuestionDataResponse':
+          return QuestionDataResponse.fromJson(value);
+        case 'QuestionsResponse':
+          return QuestionsResponse.fromJson(value);
+        case 'RecommendMetaDataResponse':
+          return RecommendMetaDataResponse.fromJson(value);
+        case 'RegistAccountParam':
+          return RegistAccountParam.fromJson(value);
+        case 'UpdatePasswordParam':
+          return UpdatePasswordParam.fromJson(value);
+        default:
+          Match match;
+          if (value is List && (match = _regList.firstMatch(targetType)) != null) {
+            targetType = match[1]; // ignore: parameter_assignments
+            return value
+              .map<dynamic>((dynamic v) => _deserialize(v, targetType, growable: growable))
+              .toList(growable: growable);
+          }
+          if (value is Set && (match = _regSet.firstMatch(targetType)) != null) {
+            targetType = match[1]; // ignore: parameter_assignments
+            return value
+              .map<dynamic>((dynamic v) => _deserialize(v, targetType, growable: growable))
+              .toSet();
+          }
+          if (value is Map && (match = _regMap.firstMatch(targetType)) != null) {
+            targetType = match[1]; // ignore: parameter_assignments
+            return Map<String, dynamic>.fromIterables(
+              value.keys.cast<String>(),
+              value.values.map<dynamic>((dynamic v) => _deserialize(v, targetType, growable: growable)),
+            );
+          }
       }
-    });
+    } on Exception catch (error, trace) {
+      throw ApiException.withInner(HttpStatus.internalServerError, 'Exception during deserialization.', error, trace,);
+    }
+    throw ApiException(HttpStatus.internalServerError, 'Could not find a suitable class for deserialization',);
   }
 }
+
+/// Primarily intended for use in an isolate.
+class DeserializationMessage {
+  const DeserializationMessage({
+    @required this.json,
+    @required this.targetType,
+    this.growable,
+  });
+
+  /// The JSON value to deserialize.
+  final String json;
+
+  /// Target type to deserialize to.
+  final String targetType;
+
+  /// Whether to make deserialized lists or maps growable.
+  final bool growable;
+}
+
+/// Primarily intended for use in an isolate.
+Future<dynamic> deserializeAsync(DeserializationMessage message) async {
+  // Remove all spaces. Necessary for regular expressions as well.
+  final targetType = message.targetType.replaceAll(' ', '');
+
+  // If the expected target type is String, nothing to do...
+  return targetType == 'String'
+    ? message.json
+    : ApiClient._deserialize(
+        jsonDecode(message.json),
+        targetType,
+        growable: message.growable == true,
+      );
+}
+
+/// Primarily intended for use in an isolate.
+Future<String> serializeAsync(Object value) async => value == null ? '' : json.encode(value);

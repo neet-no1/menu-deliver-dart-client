@@ -1,37 +1,84 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
 
 class ErrorInfo {
-  
-  String errorMessage = null;
-  
-  ErrorInfo();
+  /// Returns a new [ErrorInfo] instance.
+  ErrorInfo({
+    this.errorMessage,
+  });
+
+  String errorMessage;
 
   @override
-  String toString() {
-    return 'ErrorInfo[errorMessage=$errorMessage, ]';
-  }
+  bool operator ==(Object other) => identical(this, other) || other is ErrorInfo &&
+     other.errorMessage == errorMessage;
 
-  ErrorInfo.fromJson(Map<String, dynamic> json) {
-    if (json == null) return;
-    errorMessage =
-        json['errorMessage']
-    ;
-  }
+  @override
+  int get hashCode =>
+  // ignore: unnecessary_parenthesis
+    (errorMessage == null ? 0 : errorMessage.hashCode);
+
+  @override
+  String toString() => 'ErrorInfo[errorMessage=$errorMessage]';
 
   Map<String, dynamic> toJson() {
-    return {
-      'errorMessage': errorMessage
-     };
+    final json = <String, dynamic>{};
+    if (errorMessage != null) {
+      json[r'errorMessage'] = errorMessage;
+    }
+    return json;
   }
 
-  static List<ErrorInfo> listFromJson(List<dynamic> json) {
-    return json == null ? new List<ErrorInfo>() : json.map((value) => new ErrorInfo.fromJson(value)).toList();
+  /// Returns a new [ErrorInfo] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static ErrorInfo fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return ErrorInfo(
+        errorMessage: mapValueOfType<String>(json, r'errorMessage'),
+      );
+    }
+    return null;
   }
 
-  static Map<String, ErrorInfo> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, ErrorInfo>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new ErrorInfo.fromJson(value));
+  static List<ErrorInfo> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(ErrorInfo.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <ErrorInfo>[];
+
+  static Map<String, ErrorInfo> mapFromJson(dynamic json) {
+    final map = <String, ErrorInfo>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = ErrorInfo.fromJson(value));
+    }
+    return map;
+  }
+
+  // maps a json object with a list of ErrorInfo-objects as value to a dart map
+  static Map<String, List<ErrorInfo>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<ErrorInfo>>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = ErrorInfo.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

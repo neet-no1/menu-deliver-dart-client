@@ -1,44 +1,95 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
 
 class QuestionCategoryData {
-  /* 質問カテゴリID */
-  int id = null;
-  
-/* 質問カテゴリ名 */
-  String name = null;
-  
-  QuestionCategoryData();
+  /// Returns a new [QuestionCategoryData] instance.
+  QuestionCategoryData({
+    this.id,
+    this.name,
+  });
+
+  /// 質問カテゴリID
+  int id;
+
+  /// 質問カテゴリ名
+  String name;
 
   @override
-  String toString() {
-    return 'QuestionCategoryData[id=$id, name=$name, ]';
-  }
+  bool operator ==(Object other) => identical(this, other) || other is QuestionCategoryData &&
+     other.id == id &&
+     other.name == name;
 
-  QuestionCategoryData.fromJson(Map<String, dynamic> json) {
-    if (json == null) return;
-    id =
-        json['id']
-    ;
-    name =
-        json['name']
-    ;
-  }
+  @override
+  int get hashCode =>
+  // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id.hashCode) +
+    (name == null ? 0 : name.hashCode);
+
+  @override
+  String toString() => 'QuestionCategoryData[id=$id, name=$name]';
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name
-     };
+    final json = <String, dynamic>{};
+    if (id != null) {
+      json[r'id'] = id;
+    }
+    if (name != null) {
+      json[r'name'] = name;
+    }
+    return json;
   }
 
-  static List<QuestionCategoryData> listFromJson(List<dynamic> json) {
-    return json == null ? new List<QuestionCategoryData>() : json.map((value) => new QuestionCategoryData.fromJson(value)).toList();
+  /// Returns a new [QuestionCategoryData] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static QuestionCategoryData fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return QuestionCategoryData(
+        id: mapValueOfType<int>(json, r'id'),
+        name: mapValueOfType<String>(json, r'name'),
+      );
+    }
+    return null;
   }
 
-  static Map<String, QuestionCategoryData> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, QuestionCategoryData>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new QuestionCategoryData.fromJson(value));
+  static List<QuestionCategoryData> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(QuestionCategoryData.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <QuestionCategoryData>[];
+
+  static Map<String, QuestionCategoryData> mapFromJson(dynamic json) {
+    final map = <String, QuestionCategoryData>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = QuestionCategoryData.fromJson(value));
+    }
+    return map;
+  }
+
+  // maps a json object with a list of QuestionCategoryData-objects as value to a dart map
+  static Map<String, List<QuestionCategoryData>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<QuestionCategoryData>>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = QuestionCategoryData.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

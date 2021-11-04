@@ -1,53 +1,105 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
 
 class NoticesResponse {
-  /* 0以外はエラーコード */
-  int code = null;
-  
+  /// Returns a new [NoticesResponse] instance.
+  NoticesResponse({
+    this.info = const [],
+    this.code,
+    this.errorInfo,
+  });
 
-  ErrorInfo errorInfo = null;
-  
+  List<String> info;
 
-  List<String> info = [];
-  
-  NoticesResponse();
+  /// 0以外はエラーコード
+  int code;
+
+  ErrorInfo errorInfo;
 
   @override
-  String toString() {
-    return 'NoticesResponse[code=$code, errorInfo=$errorInfo, info=$info, ]';
-  }
+  bool operator ==(Object other) => identical(this, other) || other is NoticesResponse &&
+     other.info == info &&
+     other.code == code &&
+     other.errorInfo == errorInfo;
 
-  NoticesResponse.fromJson(Map<String, dynamic> json) {
-    if (json == null) return;
-    code =
-        json['code']
-    ;
-    errorInfo =
-      
-      
-      new ErrorInfo.fromJson(json['errorInfo'])
-;
-    info =
-        (json['info'] as List).map((item) => item as String).toList()
-    ;
-  }
+  @override
+  int get hashCode =>
+  // ignore: unnecessary_parenthesis
+    (info == null ? 0 : info.hashCode) +
+    (code == null ? 0 : code.hashCode) +
+    (errorInfo == null ? 0 : errorInfo.hashCode);
+
+  @override
+  String toString() => 'NoticesResponse[info=$info, code=$code, errorInfo=$errorInfo]';
 
   Map<String, dynamic> toJson() {
-    return {
-      'code': code,
-      'errorInfo': errorInfo,
-      'info': info
-     };
+    final json = <String, dynamic>{};
+    if (info != null) {
+      json[r'info'] = info;
+    }
+    if (code != null) {
+      json[r'code'] = code;
+    }
+    if (errorInfo != null) {
+      json[r'errorInfo'] = errorInfo;
+    }
+    return json;
   }
 
-  static List<NoticesResponse> listFromJson(List<dynamic> json) {
-    return json == null ? new List<NoticesResponse>() : json.map((value) => new NoticesResponse.fromJson(value)).toList();
+  /// Returns a new [NoticesResponse] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static NoticesResponse fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return NoticesResponse(
+        info: json[r'info'] is List
+          ? (json[r'info'] as List).cast<String>()
+          : null,
+        code: mapValueOfType<int>(json, r'code'),
+        errorInfo: ErrorInfo.fromJson(json[r'errorInfo']),
+      );
+    }
+    return null;
   }
 
-  static Map<String, NoticesResponse> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, NoticesResponse>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new NoticesResponse.fromJson(value));
+  static List<NoticesResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(NoticesResponse.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <NoticesResponse>[];
+
+  static Map<String, NoticesResponse> mapFromJson(dynamic json) {
+    final map = <String, NoticesResponse>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = NoticesResponse.fromJson(value));
+    }
+    return map;
+  }
+
+  // maps a json object with a list of NoticesResponse-objects as value to a dart map
+  static Map<String, List<NoticesResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<NoticesResponse>>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = NoticesResponse.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

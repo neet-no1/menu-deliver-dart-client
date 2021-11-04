@@ -1,117 +1,156 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
 
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
 
 
 class FollowApi {
-  final ApiClient apiClient;
-
   FollowApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+
+  final ApiClient apiClient;
 
   /// ユーザをフォローする
   ///
   /// ユーザをフォローする 認証必須 
-  Future<BasicResponse> followUser(FollowUserParam followUserParam) async {
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [FollowUserParam] followUserParam (required):
+  Future<Response> followUserWithHttpInfo(FollowUserParam followUserParam,) async {
+    // Verify required params are set.
+    if (followUserParam == null) {
+     throw ApiException(HttpStatus.badRequest, 'Missing required param: followUserParam');
+    }
+
+    // ignore: prefer_const_declarations
+    final path = r'/follow';
+
+    // ignore: prefer_final_locals
     Object postBody = followUserParam;
 
-    // verify required params are set
-    if(followUserParam == null) {
-     throw new ApiException(400, "Missing required param: followUserParam");
-    }
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
 
-    // create path and map variables
-    String path = "/follow".replaceAll("{format}","json");
+    const authNames = <String>[];
+    const contentTypes = <String>[];
 
-    // query params
-    List<QueryParam> queryParams = [];
-    Map<String, String> headerParams = {};
-    Map<String, String> formParams = {};
-    
-    List<String> contentTypes = [];
 
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
-
-    if(contentType.startsWith("multipart/form-data")) {
-      bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
-      
-      if(hasFields)
-        postBody = mp;
-    }
-    else {
-          }
-
-    var response = await apiClient.invokeAPI(path,
-                                             'POST',
-                                             queryParams,
-                                             postBody,
-                                             headerParams,
-                                             formParams,
-                                             contentType,
-                                             authNames);
-
-    if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, response.body);
-    } else if(response.body != null) {
-      return 
-          apiClient.deserialize(response.body, 'BasicResponse') as BasicResponse ;
-    } else {
-      return null;
-    }
+    return apiClient.invokeAPI(
+      path,
+      'POST',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
   }
+
+  /// ユーザをフォローする
+  ///
+  /// ユーザをフォローする 認証必須 
+  ///
+  /// Parameters:
+  ///
+  /// * [FollowUserParam] followUserParam (required):
+  Future<BasicResponse> followUser(FollowUserParam followUserParam,) async {
+    final response = await followUserWithHttpInfo(followUserParam,);
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'BasicResponse',) as BasicResponse;
+    
+    }
+    return Future<BasicResponse>.value();
+  }
+
   /// フォロー・フォロワー取得
   ///
   /// フォロー・フォロワーの情報を取得する 認証必須 
-  Future<FollowersResponse> getFollowers({ int followPage, int followerPage }) async {
-    Object postBody = null;
+  ///
+  /// Note: This method returns the HTTP [Response].
+  ///
+  /// Parameters:
+  ///
+  /// * [int] followPage:
+  ///   フォロー取得ページ番号(1~)
+  ///
+  /// * [int] followerPage:
+  ///   フォロワー取得ページ番号(1~)
+  Future<Response> getFollowersWithHttpInfo({ int followPage, int followerPage, }) async {
+    // Verify required params are set.
 
-    // verify required params are set
+    // ignore: prefer_const_declarations
+    final path = r'/follow/list';
 
-    // create path and map variables
-    String path = "/follow/list".replaceAll("{format}","json");
+    // ignore: prefer_final_locals
+    Object postBody;
 
-    // query params
-    List<QueryParam> queryParams = [];
-    Map<String, String> headerParams = {};
-    Map<String, String> formParams = {};
-    if(followPage != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "followPage", followPage));
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    if (followPage != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'followPage', followPage));
     }
-    if(followerPage != null) {
-      queryParams.addAll(_convertParametersForCollectionFormat("", "followerPage", followerPage));
+    if (followerPage != null) {
+      queryParams.addAll(_convertParametersForCollectionFormat('', 'followerPage', followerPage));
     }
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
+
+  /// フォロー・フォロワー取得
+  ///
+  /// フォロー・フォロワーの情報を取得する 認証必須 
+  ///
+  /// Parameters:
+  ///
+  /// * [int] followPage:
+  ///   フォロー取得ページ番号(1~)
+  ///
+  /// * [int] followerPage:
+  ///   フォロワー取得ページ番号(1~)
+  Future<FollowersResponse> getFollowers({ int followPage, int followerPage, }) async {
+    final response = await getFollowersWithHttpInfo( followPage: followPage, followerPage: followerPage, );
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'FollowersResponse',) as FollowersResponse;
     
-    List<String> contentTypes = [];
-
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
-
-    if(contentType.startsWith("multipart/form-data")) {
-      bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
-      
-      if(hasFields)
-        postBody = mp;
     }
-    else {
-          }
-
-    var response = await apiClient.invokeAPI(path,
-                                             'GET',
-                                             queryParams,
-                                             postBody,
-                                             headerParams,
-                                             formParams,
-                                             contentType,
-                                             authNames);
-
-    if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, response.body);
-    } else if(response.body != null) {
-      return 
-          apiClient.deserialize(response.body, 'FollowersResponse') as FollowersResponse ;
-    } else {
-      return null;
-    }
+    return Future<FollowersResponse>.value();
   }
 }

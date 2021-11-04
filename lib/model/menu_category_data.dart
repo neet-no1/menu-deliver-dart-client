@@ -1,44 +1,95 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
 
 class MenuCategoryData {
-  /* 献立カテゴリID */
-  int id = null;
-  
-/* 献立カテゴリ名 */
-  String name = null;
-  
-  MenuCategoryData();
+  /// Returns a new [MenuCategoryData] instance.
+  MenuCategoryData({
+    this.id,
+    this.name,
+  });
+
+  /// 献立カテゴリID
+  int id;
+
+  /// 献立カテゴリ名
+  String name;
 
   @override
-  String toString() {
-    return 'MenuCategoryData[id=$id, name=$name, ]';
-  }
+  bool operator ==(Object other) => identical(this, other) || other is MenuCategoryData &&
+     other.id == id &&
+     other.name == name;
 
-  MenuCategoryData.fromJson(Map<String, dynamic> json) {
-    if (json == null) return;
-    id =
-        json['id']
-    ;
-    name =
-        json['name']
-    ;
-  }
+  @override
+  int get hashCode =>
+  // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id.hashCode) +
+    (name == null ? 0 : name.hashCode);
+
+  @override
+  String toString() => 'MenuCategoryData[id=$id, name=$name]';
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id,
-      'name': name
-     };
+    final json = <String, dynamic>{};
+    if (id != null) {
+      json[r'id'] = id;
+    }
+    if (name != null) {
+      json[r'name'] = name;
+    }
+    return json;
   }
 
-  static List<MenuCategoryData> listFromJson(List<dynamic> json) {
-    return json == null ? new List<MenuCategoryData>() : json.map((value) => new MenuCategoryData.fromJson(value)).toList();
+  /// Returns a new [MenuCategoryData] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static MenuCategoryData fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return MenuCategoryData(
+        id: mapValueOfType<int>(json, r'id'),
+        name: mapValueOfType<String>(json, r'name'),
+      );
+    }
+    return null;
   }
 
-  static Map<String, MenuCategoryData> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, MenuCategoryData>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new MenuCategoryData.fromJson(value));
+  static List<MenuCategoryData> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(MenuCategoryData.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <MenuCategoryData>[];
+
+  static Map<String, MenuCategoryData> mapFromJson(dynamic json) {
+    final map = <String, MenuCategoryData>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = MenuCategoryData.fromJson(value));
+    }
+    return map;
+  }
+
+  // maps a json object with a list of MenuCategoryData-objects as value to a dart map
+  static Map<String, List<MenuCategoryData>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<MenuCategoryData>>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = MenuCategoryData.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

@@ -1,53 +1,103 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
 
 class AccountAuthResponse {
-  /* 0以外はエラーコード */
-  int code = null;
-  
+  /// Returns a new [AccountAuthResponse] instance.
+  AccountAuthResponse({
+    this.info,
+    this.code,
+    this.errorInfo,
+  });
 
-  ErrorInfo errorInfo = null;
-  
+  bool info;
 
-  bool info = null;
-  
-  AccountAuthResponse();
+  /// 0以外はエラーコード
+  int code;
+
+  ErrorInfo errorInfo;
 
   @override
-  String toString() {
-    return 'AccountAuthResponse[code=$code, errorInfo=$errorInfo, info=$info, ]';
-  }
+  bool operator ==(Object other) => identical(this, other) || other is AccountAuthResponse &&
+     other.info == info &&
+     other.code == code &&
+     other.errorInfo == errorInfo;
 
-  AccountAuthResponse.fromJson(Map<String, dynamic> json) {
-    if (json == null) return;
-    code =
-        json['code']
-    ;
-    errorInfo =
-      
-      
-      new ErrorInfo.fromJson(json['errorInfo'])
-;
-    info =
-        json['info']
-    ;
-  }
+  @override
+  int get hashCode =>
+  // ignore: unnecessary_parenthesis
+    (info == null ? 0 : info.hashCode) +
+    (code == null ? 0 : code.hashCode) +
+    (errorInfo == null ? 0 : errorInfo.hashCode);
+
+  @override
+  String toString() => 'AccountAuthResponse[info=$info, code=$code, errorInfo=$errorInfo]';
 
   Map<String, dynamic> toJson() {
-    return {
-      'code': code,
-      'errorInfo': errorInfo,
-      'info': info
-     };
+    final json = <String, dynamic>{};
+    if (info != null) {
+      json[r'info'] = info;
+    }
+    if (code != null) {
+      json[r'code'] = code;
+    }
+    if (errorInfo != null) {
+      json[r'errorInfo'] = errorInfo;
+    }
+    return json;
   }
 
-  static List<AccountAuthResponse> listFromJson(List<dynamic> json) {
-    return json == null ? new List<AccountAuthResponse>() : json.map((value) => new AccountAuthResponse.fromJson(value)).toList();
+  /// Returns a new [AccountAuthResponse] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static AccountAuthResponse fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return AccountAuthResponse(
+        info: mapValueOfType<bool>(json, r'info'),
+        code: mapValueOfType<int>(json, r'code'),
+        errorInfo: ErrorInfo.fromJson(json[r'errorInfo']),
+      );
+    }
+    return null;
   }
 
-  static Map<String, AccountAuthResponse> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, AccountAuthResponse>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new AccountAuthResponse.fromJson(value));
+  static List<AccountAuthResponse> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(AccountAuthResponse.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <AccountAuthResponse>[];
+
+  static Map<String, AccountAuthResponse> mapFromJson(dynamic json) {
+    final map = <String, AccountAuthResponse>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = AccountAuthResponse.fromJson(value));
+    }
+    return map;
+  }
+
+  // maps a json object with a list of AccountAuthResponse-objects as value to a dart map
+  static Map<String, List<AccountAuthResponse>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<AccountAuthResponse>>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = AccountAuthResponse.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }

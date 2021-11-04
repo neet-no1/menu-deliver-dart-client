@@ -1,59 +1,68 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
 
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
 
 
 class NoticeApi {
+  NoticeApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+
   final ApiClient apiClient;
 
-  NoticeApi([ApiClient apiClient]) : apiClient = apiClient ?? defaultApiClient;
+  /// お知らせ情報取得
+  ///
+  /// お知らせ情報を取得する 複数のお知らせを取得する 認証不要 
+  ///
+  /// Note: This method returns the HTTP [Response].
+  Future<Response> getNoticesWithHttpInfo() async {
+    // ignore: prefer_const_declarations
+    final path = r'/notice';
+
+    // ignore: prefer_final_locals
+    Object postBody;
+
+    final queryParams = <QueryParam>[];
+    final headerParams = <String, String>{};
+    final formParams = <String, String>{};
+
+    const authNames = <String>[];
+    const contentTypes = <String>[];
+
+
+    return apiClient.invokeAPI(
+      path,
+      'GET',
+      queryParams,
+      postBody,
+      headerParams,
+      formParams,
+      contentTypes.isEmpty ? null : contentTypes[0],
+      authNames,
+    );
+  }
 
   /// お知らせ情報取得
   ///
   /// お知らせ情報を取得する 複数のお知らせを取得する 認証不要 
   Future<NoticesResponse> getNotices() async {
-    Object postBody = null;
-
-    // verify required params are set
-
-    // create path and map variables
-    String path = "/notice".replaceAll("{format}","json");
-
-    // query params
-    List<QueryParam> queryParams = [];
-    Map<String, String> headerParams = {};
-    Map<String, String> formParams = {};
+    final response = await getNoticesWithHttpInfo();
+    if (response.statusCode >= HttpStatus.badRequest) {
+      throw ApiException(response.statusCode, await _decodeBodyBytes(response));
+    }
+    // When a remote server returns no body with a status of 204, we shall not decode it.
+    // At the time of writing this, `dart:convert` will throw an "Unexpected end of input"
+    // FormatException when trying to decode an empty string.
+    if (response.body != null && response.statusCode != HttpStatus.noContent) {
+      return await apiClient.deserializeAsync(await _decodeBodyBytes(response), 'NoticesResponse',) as NoticesResponse;
     
-    List<String> contentTypes = [];
-
-    String contentType = contentTypes.length > 0 ? contentTypes[0] : "application/json";
-    List<String> authNames = [];
-
-    if(contentType.startsWith("multipart/form-data")) {
-      bool hasFields = false;
-      MultipartRequest mp = new MultipartRequest(null, null);
-      
-      if(hasFields)
-        postBody = mp;
     }
-    else {
-          }
-
-    var response = await apiClient.invokeAPI(path,
-                                             'GET',
-                                             queryParams,
-                                             postBody,
-                                             headerParams,
-                                             formParams,
-                                             contentType,
-                                             authNames);
-
-    if(response.statusCode >= 400) {
-      throw new ApiException(response.statusCode, response.body);
-    } else if(response.body != null) {
-      return 
-          apiClient.deserialize(response.body, 'NoticesResponse') as NoticesResponse ;
-    } else {
-      return null;
-    }
+    return Future<NoticesResponse>.value();
   }
 }

@@ -1,37 +1,85 @@
-part of swagger.api;
+//
+// AUTO-GENERATED FILE, DO NOT MODIFY!
+//
+// @dart=2.0
+
+// ignore_for_file: unused_element, unused_import
+// ignore_for_file: always_put_required_named_parameters_first
+// ignore_for_file: constant_identifier_names
+// ignore_for_file: lines_longer_than_80_chars
+
+part of openapi.api;
 
 class DeleteMenuParam {
-  /* 献立ID */
-  int id = null;
-  
-  DeleteMenuParam();
+  /// Returns a new [DeleteMenuParam] instance.
+  DeleteMenuParam({
+    this.id,
+  });
+
+  /// 献立ID
+  int id;
 
   @override
-  String toString() {
-    return 'DeleteMenuParam[id=$id, ]';
-  }
+  bool operator ==(Object other) => identical(this, other) || other is DeleteMenuParam &&
+     other.id == id;
 
-  DeleteMenuParam.fromJson(Map<String, dynamic> json) {
-    if (json == null) return;
-    id =
-        json['id']
-    ;
-  }
+  @override
+  int get hashCode =>
+  // ignore: unnecessary_parenthesis
+    (id == null ? 0 : id.hashCode);
+
+  @override
+  String toString() => 'DeleteMenuParam[id=$id]';
 
   Map<String, dynamic> toJson() {
-    return {
-      'id': id
-     };
+    final json = <String, dynamic>{};
+    if (id != null) {
+      json[r'id'] = id;
+    }
+    return json;
   }
 
-  static List<DeleteMenuParam> listFromJson(List<dynamic> json) {
-    return json == null ? new List<DeleteMenuParam>() : json.map((value) => new DeleteMenuParam.fromJson(value)).toList();
+  /// Returns a new [DeleteMenuParam] instance and imports its values from
+  /// [value] if it's a [Map], null otherwise.
+  // ignore: prefer_constructors_over_static_methods
+  static DeleteMenuParam fromJson(dynamic value) {
+    if (value is Map) {
+      final json = value.cast<String, dynamic>();
+      return DeleteMenuParam(
+        id: mapValueOfType<int>(json, r'id'),
+      );
+    }
+    return null;
   }
 
-  static Map<String, DeleteMenuParam> mapFromJson(Map<String, Map<String, dynamic>> json) {
-    var map = new Map<String, DeleteMenuParam>();
-    if (json != null && json.length > 0) {
-      json.forEach((String key, Map<String, dynamic> value) => map[key] = new DeleteMenuParam.fromJson(value));
+  static List<DeleteMenuParam> listFromJson(dynamic json, {bool emptyIsNull, bool growable,}) =>
+    json is List && json.isNotEmpty
+      ? json.map(DeleteMenuParam.fromJson).toList(growable: true == growable)
+      : true == emptyIsNull ? null : <DeleteMenuParam>[];
+
+  static Map<String, DeleteMenuParam> mapFromJson(dynamic json) {
+    final map = <String, DeleteMenuParam>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) => map[key] = DeleteMenuParam.fromJson(value));
+    }
+    return map;
+  }
+
+  // maps a json object with a list of DeleteMenuParam-objects as value to a dart map
+  static Map<String, List<DeleteMenuParam>> mapListFromJson(dynamic json, {bool emptyIsNull, bool growable,}) {
+    final map = <String, List<DeleteMenuParam>>{};
+    if (json is Map && json.isNotEmpty) {
+      json
+        .cast<String, dynamic>()
+        .forEach((key, dynamic value) {
+          map[key] = DeleteMenuParam.listFromJson(
+            value,
+            emptyIsNull: emptyIsNull,
+            growable: growable,
+          );
+        });
     }
     return map;
   }
