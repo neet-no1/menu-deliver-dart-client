@@ -1,0 +1,70 @@
+library swagger.api;
+
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/browser_client.dart';
+import 'package:http/http.dart';
+
+part 'api_client.dart';
+part 'api_helper.dart';
+part 'api_exception.dart';
+part 'auth/authentication.dart';
+part 'auth/api_key_auth.dart';
+part 'auth/oauth.dart';
+part 'auth/http_basic_auth.dart';
+
+part 'api/account_api.dart';
+part 'api/article_api.dart';
+part 'api/favorite_api.dart';
+part 'api/follow_api.dart';
+part 'api/login_api.dart';
+part 'api/menu_api.dart';
+part 'api/notice_api.dart';
+part 'api/question_api.dart';
+part 'api/recommend_api.dart';
+
+part 'model/account_auth_response.dart';
+part 'model/account_data.dart';
+part 'model/account_response.dart';
+part 'model/answer_data.dart';
+part 'model/answers_response.dart';
+part 'model/article_data.dart';
+part 'model/article_data_response.dart';
+part 'model/articles_response.dart';
+part 'model/basic_response.dart';
+part 'model/best_answer_response.dart';
+part 'model/composition_data.dart';
+part 'model/compositions_response.dart';
+part 'model/decide_best_answer_param.dart';
+part 'model/delete_article_param.dart';
+part 'model/delete_menu_param.dart';
+part 'model/error_info.dart';
+part 'model/favorite_article_is_added_response.dart';
+part 'model/favorite_article_param.dart';
+part 'model/favorite_menu_is_added_response.dart';
+part 'model/favorite_menu_param.dart';
+part 'model/follow_user_data.dart';
+part 'model/follow_user_param.dart';
+part 'model/followers_response.dart';
+part 'model/menu_categories_response.dart';
+part 'model/menu_category_data.dart';
+part 'model/menu_data.dart';
+part 'model/menu_data_response.dart';
+part 'model/menu_deliver_response.dart';
+part 'model/menu_image_data.dart';
+part 'model/menus_and_articles_response.dart';
+part 'model/menus_response.dart';
+part 'model/notices_response.dart';
+part 'model/page_nation.dart';
+part 'model/password_reset_param.dart';
+part 'model/question_categories_response.dart';
+part 'model/question_category_data.dart';
+part 'model/question_data.dart';
+part 'model/question_data_response.dart';
+part 'model/questions_response.dart';
+part 'model/recommend_meta_data_response.dart';
+part 'model/regist_account_param.dart';
+part 'model/update_password_param.dart';
+
+
+ApiClient defaultApiClient = new ApiClient();
