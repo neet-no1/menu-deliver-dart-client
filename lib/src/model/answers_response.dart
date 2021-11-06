@@ -85,7 +85,7 @@ class _$AnswersResponseSerializer implements StructuredSerializer<AnswersRespons
                 case r'info':
                     final valueDes = serializers.deserialize(value,
                         specifiedType: const FullType(JsonObject)) as JsonObject;
-                    result.info.replace(valueDes);
+                    result.info = valueDes;
                     break;
                 case r'code':
                     final valueDes = serializers.deserialize(value,
